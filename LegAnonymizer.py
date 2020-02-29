@@ -7,6 +7,7 @@ from pyspark.sql import SQLContext
 from collections import defaultdict
 from pyspark.sql.functions import udf, col, countDistinct
 import time
+import logging
 import findspark
 
 
@@ -128,7 +129,7 @@ class LegAnonymizer():
                 mapper = udf(lambda x: fake_mapper[int(x)])
                 df = df.withColumn(column_name, mapper(df[column_name]))
 
-        print('Done! Thanks for using LEG Anonymizer.')
+        print('Done.')
         return df
 
 
@@ -139,7 +140,7 @@ if __name__ == '__main__':
     findspark.init()
     sc = SparkContext("local", "LEG_Anonymizer")
     sqlContext = SQLContext(sc)
-    df = sqlContext.read.parquet('fake_data.parquet.gzip')
+    df = sqlContext.read.parquet('data/fake_data2_5m.parquet.gzip')
     print('Amount of distinct Names: ' +  str(df.select("Name").distinct().count()))
     print('Amount of distinct Addresses: ' + str(df.select("Address").distinct().count()))
     print('Shape of DataFrame: ' + str((df.count(), len(df.columns))))

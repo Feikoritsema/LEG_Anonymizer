@@ -1,6 +1,5 @@
 from faker.providers import credit_card, phone_number, date_time, internet, bank
 import pandas as pd
-import numpy as np
 from faker import Faker
 from collections import defaultdict
 import time
@@ -57,7 +56,7 @@ if __name__ == '__main__':
     If you want to run any tests, run them here.
     '''
     start_time = time.time()
-    data = pd.read_parquet('fake_data.parquet.gzip')
+    data = pd.read_parquet('data/fake_data2_5m.parquet.gzip')
     print('Reading the data took: ' + str(time.time()-start_time) + ' seconds')
     print(data.shape)
     print('Amount of distinct Names: ' + str(len(data['Name'].unique())))
