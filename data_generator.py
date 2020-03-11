@@ -17,16 +17,18 @@ possible_types = {'Name': faker.name,
                   'date_time': faker.date_time}
 
 if __name__ == '__main__':
+    '''
+    Used to create fake data with the below columns and below amount of rows.
+    This can then be used in test_examples.py to test the results of pyspark vs pandas
+    '''
     numrows = 2500000
     columns = ['Name', 'Credit_card', 'Telephone', 'Address', 'Target', 'date_time']
     df = pd.DataFrame(columns=columns)
     for col in df.columns:
         df[col] = range(numrows)
     for col in df.columns:
-        print(col)
         faker_mapper = defaultdict(possible_types[col])
         mapper = lambda x: faker_mapper[x]
         df[col] = df[col].apply(mapper)
-    print(df)
     df.to_parquet('fake_data2_5m.parquet.gzip', compression='gzip')
 

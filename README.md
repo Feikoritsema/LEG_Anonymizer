@@ -1,4 +1,4 @@
-#LegAnonymizer
+# LegAnonymizer
 A generic automated utility for anonimizing PySpark DataFrames. 
 
 ## Instructions for use
