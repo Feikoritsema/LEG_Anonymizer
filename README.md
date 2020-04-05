@@ -1,6 +1,8 @@
 # LegAnonymizer
 A generic automated utility for anonimizing PySpark DataFrames. 
 
+*Please do think about your own requirements and anonymization needs before blindly using this and publishing data. The LegAnonymizer is not a full fool-proof anonymizer which adheres to GDPR regulations for publishing personal data. The LegAnonymizer is more of a tool which performs Pseudonymization in order to keep the distribution and semantic meaning for analysis and visualization purposes.* 
+
 ## Instructions for use
 
 ### Installation
